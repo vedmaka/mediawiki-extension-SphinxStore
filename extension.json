@@ -1,0 +1,38 @@
+{
+	"name": "SphinxStore",
+	"version": "0.0.0",
+	"author": [
+		"Jon"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:SphinxStore",
+	"descriptionmsg": "sphinxsearch-desc",
+	"license-name": "MIT",
+	"type": "other",
+	"AutoloadClasses": {
+		"SphinxStoreHooks": "SphinxStore.hooks.php",
+		"SpecialSphinxStore": "specials/SpecialSphinxStore.php",
+		"SMWSphinxStore": "includes/SMWSphinxStore.php"
+	},
+	"callback": {
+		"SphinxStoreHooks::onExtensionLoaded"	
+	},
+	"config": {
+		"SphinxStoreEnableFoo": true
+	},
+	"ExtensionMessagesFiles": {
+		"SphinxStoreAlias": "SphinxStore.i18n.alias.php"
+	},
+	"Hooks": {
+		"NameOfHook": [
+			"SphinxStoreHooks::onNameOfHook"
+		]
+	},
+	"MessagesDirs": {
+		"SphinxStore": [
+			"i18n"
+		]
+	},
+	"SpecialPages": {
+		"SphinxStore": "SpecialSphinxStore"
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"@metadata": {
+		"authors": ["Jon"]
+	},
+	"sphinxsearch-desc": "Integrates SphinxSearch engine into SMW queries"
+}
