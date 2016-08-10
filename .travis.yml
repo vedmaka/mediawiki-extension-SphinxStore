@@ -14,7 +14,7 @@ before_script:
   - mysql -e 'create database wiki;'
   - composer install --no-dev
   - php maintenance/install.php --dbtype mysql --dbuser root --dbname wiki --dbpath $TRAVIS_BUILD_DIR --pass nyan TravisWiki admin
-  - composer require mediawiki/semantic-media-wiki "~2.3" --update-no-dev --quiet --no-interactions
+  - composer require mediawiki/semantic-media-wiki "~2.3" --update-no-dev --quiet --no-interaction
   - php maintenance/update.php
   - echo "\nenableSemantics( 'example.org' )" >> LocalSettings.php
   - cd extensions
