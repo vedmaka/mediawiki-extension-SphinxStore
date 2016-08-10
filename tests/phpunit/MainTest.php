@@ -3,7 +3,7 @@
 class SphinxStoreMainTest extends MediaWikiTestCase {
 
 	public function testOne() {
-		$this->assertEquals(1, 1);
+		$this->assertEquals(1, 2);
 	}
 
 }
