@@ -10,9 +10,8 @@ before_script:
   - mv composer.json composer.json.bak
   - sed -n '/"wikimedia\/composer-merge-plugin"? "\^1\.3",/!p' composer.json.bak > composer.json
   - rm composer.json.bak
-  - rm composer.lock
   - mysql -e 'create database wiki;'
-  - git clone -b REL1_25 https://gerrit.wikimedia.org/r/p/mediawiki/vendor.git
+  - composer install --no-dev
   - php maintenance/install.php --dbtype mysql --dbuser root --dbname wiki --dbpath $TRAVIS_BUILD_DIR --pass nyan TravisWiki admin
   - composer require mediawiki/semantic-media-wiki "~2.3" --update-no-dev --quiet --no-interactions
   - php maintenance/update.php
