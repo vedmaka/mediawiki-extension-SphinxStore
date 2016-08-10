@@ -8,6 +8,7 @@
 		"test": [
 			"parallel-lint . --exclude vendor",
 			"phpcs -p -s"
-		]
+		],
+		"phpunit": "php ../../tests/phpunit/phpunit.php tests/phpunit/"
 	}
 }
