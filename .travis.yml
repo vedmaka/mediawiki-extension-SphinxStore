@@ -9,6 +9,7 @@ before_script:
   - cd wiki
   - mv composer.json composer.json.bak
   - 'sed -n ''/"wikimedia\/composer-merge-plugin": "\^1\.3",/!p'' composer.json.bak > composer.json'
+  - cat composer.json
   - rm composer.json.bak
   - mysql -e 'create database wiki;'
   - composer install --no-dev
