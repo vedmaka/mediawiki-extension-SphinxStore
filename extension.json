@@ -13,11 +13,9 @@
 		"SpecialSphinxStore": "specials/SpecialSphinxStore.php",
 		"SMWSphinxStore": "includes/SMWSphinxStore.php"
 	},
-	"callback": {
-		"SphinxStoreHooks::onExtensionLoaded"	
-	},
+	"callback": "SphinxStoreHooks::onExtensionLoaded",
 	"config": {
-		"SphinxStoreEnableFoo": true
+		"SphinxStoreOriginalStore": null
 	},
 	"ExtensionMessagesFiles": {
 		"SphinxStoreAlias": "SphinxStore.i18n.alias.php"
