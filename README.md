@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/vedmaka/mediawiki-extension-SphinxStore.svg?branch=master)](https://travis-ci.org/vedmaka/mediawiki-extension-SphinxStore)
 
-== Intro ==
+# Intro
 
 Ancient, most unusual species never gather a ship-wide, harmless moon.
 All of those disconnections will be lost in voyages like alarms in ellipses
