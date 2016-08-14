@@ -56,8 +56,30 @@ class SpecialSphinxStore extends SpecialPage {
 		foreach ($result as $row) {
 			$results[] = $row;
 		}*/
-
-
+		
+		error_reporting(E_ALL); ini_set('display_errors', 1);
+		
+		$conn = new Foolz\SphinxQL\Drivers\Mysqli\Connection();
+		$conn->setParams( array('host' => '127.0.0.1', 'port' => 9313) );
+		Foolz\SphinxQL\Helper::create($conn)->flushRtIndex('wiki_rt');
+		
+		$query = Foolz\SphinxQL\SphinxQL::create( $conn )
+			->delete()->from('wiki_rt')->where('id','>',0)->execute();
+			
+		$out->addHTML('Cleared index.<br>');
+		
+		$query = Foolz\SphinxQL\SphinxQL::create( $conn )
+			->insert()->into('wiki_rt')->set(array(
+					'id' => 1,
+					'title' => 'Test',
+					'content' => 'Test 12345'
+				));
+				
+		$result = $query->execute();
+		
+		$out->addHTML('Added rows.<br>');
+		
+		
 
 	}
 
