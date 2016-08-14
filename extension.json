@@ -11,7 +11,8 @@
 	"AutoloadClasses": {
 		"SphinxStoreHooks": "SphinxStore.hooks.php",
 		"SpecialSphinxStore": "specials/SpecialSphinxStore.php",
-		"SMWSphinxStore": "includes/SMWSphinxStore.php"
+		"SMWSphinxStore": "includes/SMWSphinxStore.php",
+		"SphinxClient": "sphinxapi.php"
 	},
 	"callback": "SphinxStoreHooks::onExtensionLoaded",
 	"config": {

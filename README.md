@@ -2,7 +2,19 @@
 
 # Intro
 
-Ancient, most unusual species never gather a ship-wide, harmless moon.
-All of those disconnections will be lost in voyages like alarms in ellipses
-Countless devastations will be lost in minds like resistances in winds
-Sensors wobble from voyages like devastated hur'qs.
+This extension is in development stage. SphinxStore allows to combine semantic
+property-value search with full-text stemmed Sphinx search for text-based properties.
+
+# Requirements
+
+- Sphinx version 2.2.+
+- PHP 5.6+
+- Mediawiki 1.25+
+
+# How to obtain 2.2 Sphinx on Ubuntu
+
+```bash
+$ add-apt-repository ppa:builds/sphinxsearch-rel22
+$ apt-get update
+$ apt-get install sphinxsearch
+```

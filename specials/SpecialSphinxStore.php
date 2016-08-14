@@ -20,6 +20,45 @@ class SpecialSphinxStore extends SpecialPage {
 	public function execute( $sub ) {
 		$out = $this->getOutput();
 		$out->setPageTitle('SphinxStore test page');
+
+		// Sphinx API
+		/*$sphinx = new SphinxClient();
+		$sphinx->SetServer( "127.0.0.1", 9312 );
+		$sphinx->SetArrayResult( true );
+
+		//$sphinx->SetFilter("geonames_id", array(12345) );
+		$result = $sphinx->Query( "sample" );
+
+		if( $result ) {
+			if( array_key_exists('matches', $result) && is_array($result['matches']) && count($result['matches']) ) {
+				foreach ($result['matches'] as $match) {
+
+					$out->addHTML("<br><b>".$match['attrs']['semantic_title']."</b>");
+
+				}
+			}
+		}else{
+			$out->addHTML( $sphinx->GetLastError() );
+		}*/
+
+		// Sphinx QL
+		/*$conn = new Foolz\SphinxQL\Drivers\Mysqli\Connection();
+		$conn->setParams( array('host' => '127.0.0.1', 'port' => 9313) );
+
+		$query = Foolz\SphinxQL\SphinxQL::create( $conn )
+			->select('*')
+			->from('wiki_main')
+			->match('', 'sample');
+
+		$result = $query->execute();
+		$results = array();
+
+		foreach ($result as $row) {
+			$results[] = $row;
+		}*/
+
+
+
 	}
 
 	protected function getGroupName() {
