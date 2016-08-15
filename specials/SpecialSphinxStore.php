@@ -68,18 +68,38 @@ class SpecialSphinxStore extends SpecialPage {
 			
 		$out->addHTML('Cleared index.<br>');
 		
+		$jsonData = array(
+				'property1' => 'hello',
+				'property2' => 'world',
+				'property3' => 1024
+			);
+		$json = json_encode($jsonData);
+		
 		$query = Foolz\SphinxQL\SphinxQL::create( $conn )
 			->insert()->into('wiki_rt')->set(array(
 					'id' => 1,
 					'title' => 'Test',
-					'content' => 'Test 12345'
+					'content' => 'Test 12345',
+					'properties' => $json
 				));
 				
 		$result = $query->execute();
 		
 		$out->addHTML('Added rows.<br>');
 		
+		$out->addHTML('Making query ..<br>');
 		
+		$query = Foolz\SphinxQL\SphinxQL::create( $conn )
+			->select('*')
+			->from('wiki_rt')
+			->match('', 'test')
+			->where('properties.property1', 'world');
+			
+		$result = $query->execute();
+		
+		foreach( $result as $r ) {
+			$out->addHTML('<br> - '. print_r($r, 1));
+		}
 
 	}
 

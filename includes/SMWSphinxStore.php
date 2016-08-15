@@ -92,6 +92,9 @@ class SMWSphinxStore extends \SMW\Store {
 	 * @return mixed
 	 */
 	public function deleteSubject( Title $subject ) {
+		
+		SphinxStore::getInstance()->deleteDoc( $subject->getArticleID() );
+		
 		return self::getBaseStore()->deleteSubject( $subject );
 	}
 
@@ -101,6 +104,9 @@ class SMWSphinxStore extends \SMW\Store {
 	 * @return mixed
 	 */
 	public function doDataUpdate( \SMW\SemanticData $data ) {
+		
+		SphinxStore::getInstance()->parseSemanticData( $data );
+		
 		return self::getBaseStore()->doDataUpdate( $data );
 	}
 

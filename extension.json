@@ -12,11 +12,15 @@
 		"SphinxStoreHooks": "SphinxStore.hooks.php",
 		"SpecialSphinxStore": "specials/SpecialSphinxStore.php",
 		"SMWSphinxStore": "includes/SMWSphinxStore.php",
-		"SphinxClient": "sphinxapi.php"
+		"SphinxClient": "sphinxapi.php",
+		"SphinxStore": "SphinxStore.class.php"
 	},
 	"callback": "SphinxStoreHooks::onExtensionLoaded",
 	"config": {
-		"SphinxStoreOriginalStore": null
+		"SphinxStoreOriginalStore": null,
+		"SphinxStoreServer": "localhost",
+		"SphinxStorePort": 9313,
+		"SphinxStoreIndex": "wiki_rt"
 	},
 	"ExtensionMessagesFiles": {
 		"SphinxStoreAlias": "SphinxStore.i18n.alias.php"
