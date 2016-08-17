@@ -20,7 +20,8 @@
 		"SphinxStoreOriginalStore": null,
 		"SphinxStoreServer": "localhost",
 		"SphinxStorePort": 9313,
-		"SphinxStoreIndex": "wiki_rt"
+		"SphinxStoreIndex": "wiki_rt",
+		"SphinxStoreCategory": "Indexed"
 	},
 	"ExtensionMessagesFiles": {
 		"SphinxStoreAlias": "SphinxStore.i18n.alias.php"

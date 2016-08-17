@@ -180,6 +180,7 @@ class SMWSphinxStore extends \SMW\Store {
 	 * @return mixed
 	 */
 	public function drop( $verbose = true ) {
+		SphinxStore::getInstance()->deleteAll();
 		return self::getBaseStore()->drop( $verbose );
 	}
 
