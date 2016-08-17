@@ -20,7 +20,17 @@ class SphinxStore {
         }
         return self::$instance;
     }
-    
+
+    public function getQuery()
+    {
+    	return SphinxQL::create( $this->connection );
+    }
+
+    public function getIndex()
+    {
+    	return $this->index;
+    }
+
     public function __construct()
     {
         global $wgSphinxStoreServer, $wgSphinxStorePort, $wgSphinxStoreIndex, $wgSphinxStoreCategory;
