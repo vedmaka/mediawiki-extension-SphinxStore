@@ -11,6 +11,7 @@ class SphinxStore {
     protected static $instance;
     protected $index;
 	protected $category;
+	protected $contentProperties;
     protected $connection;
     
     public static function getInstance()
@@ -33,7 +34,9 @@ class SphinxStore {
 
     public function __construct()
     {
-        global $wgSphinxStoreServer, $wgSphinxStorePort, $wgSphinxStoreIndex, $wgSphinxStoreCategory;
+        global $wgSphinxStoreServer, $wgSphinxStorePort, $wgSphinxStoreIndex,
+               $wgSphinxStoreCategory, $wgSphinxStoreContentProperties;
+
         $this->connection = new Connection();
         $this->connection->setParams( array(
             'host' => $wgSphinxStoreServer,
@@ -41,6 +44,7 @@ class SphinxStore {
         ));
         $this->index = $wgSphinxStoreIndex;
 	    $this->category = $wgSphinxStoreCategory;
+	    $this->contentProperties = $wgSphinxStoreContentProperties;
     }
 
 	/**
@@ -126,7 +130,12 @@ class SphinxStore {
         // Prepare some fields and constant attributes variables
         $fTitle = $mwTitle->getText();
 	    $fAliasTitle = $fTitle;
-        $fContent = $mwPage->getContent()->getWikitextForTransclusion();
+	    // TODO: there is no need to store full page content in the index
+	    if( $this->contentProperties ) {
+		    $fContent = ""; // Lets keep content empty at start and just populate it with some properties (if any)
+	    }else{
+		    $fContent = $mwPage->getContent()->getWikitextForTransclusion(); // Just use raw page text as content
+	    }
         $fProperties = array();
         
         // Iterate through properties and store their values as data
@@ -177,6 +186,11 @@ class SphinxStore {
 					    // Handle string-based properties normally
 						/** @var SMWDIBlob $di */
 						$fProperties[ $propertyName ][] = $di->getString();
+						// Add to content index if property marked as 'content' property
+						// note: we're using non-normalized property label here to make config less frustrating for users
+				        if( $this->contentProperties && in_array( $property->getLabel(), $this->contentProperties ) ) {
+				        	$fContent .= " ".$di->getString();
+				        }
 					    break;
 				    case SMWDataItem::TYPE_NUMBER:
 				    	// Handle numeric property value
