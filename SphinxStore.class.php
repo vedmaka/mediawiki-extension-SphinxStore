@@ -100,11 +100,16 @@ class SphinxStore {
         
         $mwTitle = $data->getSubject()->getTitle();
 
-	    if( !$mwTitle || !$mwTitle->exists() ) {
+	    if( !$mwTitle /*|| !$mwTitle->exists()*/ ) {
+	    	wfDebugLog("SphinxStore", "parseSemanticData called with invalid Title object.");
 		    return;
 	    }
 
 		$mwPage = new WikiPage( $mwTitle );
+		if( !$mwPage ) {
+			wfDebugLog("SphinxStore", "parseSemanticData called with invalid WikiPage object.");
+			return;
+		}
 
         //TODO: review
         // In general we should ignore all pages except NS_MAIN
