@@ -20,6 +20,7 @@ before_script:
   - composer require foolz/sphinxql-query-builder "^1.1" --update-no-dev --no-interaction
   - composer require mediawiki/semantic-forms "^3.7" --update-no-dev --no-interaction
   - cat composer.json
+  - cat composer.lock
   - composer update
   - php maintenance/update.php --quick
   - echo -e "\nenableSemantics( 'example.org' );\n" >> LocalSettings.php
