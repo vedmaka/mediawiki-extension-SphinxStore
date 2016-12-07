@@ -26,6 +26,7 @@ before_script:
   - cd ..
   - echo -e "\nwfLoadExtension('SphinxStore');\n" >> LocalSettings.php
   - composer require 'phpunit/phpunit=3.7.*' --prefer-source
+  - composer require 'foolz/sphinxql-query-builder'
   - cd extensions/SemanticMediaWiki
 script:
   - composer phpunit
