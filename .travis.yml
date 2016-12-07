@@ -22,6 +22,7 @@ before_script:
   - cp -r $TRAVIS_BUILD_DIR SphinxStore
   - cd ..
   - echo -e "\nwfLoadExtension('SphinxStore');\n" >> LocalSettings.php
+  - cat composer.json | grep semantic-media-wiki
   - composer require 'phpunit/phpunit=3.7.*' --prefer-source
   - cd extensions/SemanticMediaWiki
 script:
