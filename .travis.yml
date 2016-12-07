@@ -13,10 +13,11 @@ before_script:
   - cat composer.json
   - rm composer.json.bak
   - mysql -e 'create database wiki;'
-  - composer install --no-dev --quiet
+  - composer install --no-dev
   - php maintenance/install.php --dbtype mysql --dbuser root --dbname wiki --dbpath $TRAVIS_BUILD_DIR --pass nyan TravisWiki admin
-  - cat composer.json | grep semantic-media-wiki
+  - cat composer.json
   - composer require mediawiki/semantic-media-wiki "2.3" --update-no-dev --no-interaction
+  - cat composer.json
   - php maintenance/update.php --quick
   - echo -e "\nenableSemantics( 'example.org' );\n" >> LocalSettings.php
   - cd extensions
