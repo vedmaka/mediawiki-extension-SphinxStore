@@ -200,7 +200,7 @@ class SphinxStore {
 				    case SMWDataItem::TYPE_NUMBER:
 				    	// Handle numeric property value
 						/** @var SMWDINumber $di */
-					    $fProperties[ $propertyName ][] = $di->getNumber();
+					    $fProperties[ $propertyName ][] = (int)$di->getNumber();
 					    break;
 				    case SMWDataItem::TYPE_WIKIPAGE:
 				    	// Handle wikipage type value
