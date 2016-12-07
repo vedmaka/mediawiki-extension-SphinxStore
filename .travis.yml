@@ -29,6 +29,7 @@ before_script:
   - echo -e "\nwfLoadExtension('SphinxStore');\n" >> LocalSettings.php
   - composer require 'phpunit/phpunit=3.7.*' --prefer-source
   - cd extensions/SemanticMediaWiki
+  - composer update
 script:
   - composer phpunit
   - cd ../SphinxStore
