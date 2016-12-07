@@ -16,7 +16,7 @@ before_script:
   - php maintenance/install.php --dbtype mysql --dbuser root --dbname wiki --dbpath $TRAVIS_BUILD_DIR --pass nyan TravisWiki admin
   - composer require 'mediawiki/semantic-media-wiki' "2.3.0" --update-no-dev --no-interaction
   - composer require 'foolz/sphinxql-query-builder=1.1.0' --no-interaction --prefer-source
-  - composer require 'mediawiki/semantic-forms=3.7' --no-interaction --prefer-source
+  - composer require 'mediawiki/semantic-forms=3.2' --no-interaction --prefer-source
   - composer require 'phpunit/phpunit=3.7.37' --prefer-source --no-interaction
   - composer update
   - echo -e "\nenableSemantics( 'example.org' );\n" >> LocalSettings.php
