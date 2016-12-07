@@ -15,14 +15,14 @@ before_script:
   - mysql -e 'create database wiki;'
   - composer install --no-dev --quiet
   - php maintenance/install.php --dbtype mysql --dbuser root --dbname wiki --dbpath $TRAVIS_BUILD_DIR --pass nyan TravisWiki admin
-  - composer require mediawiki/semantic-media-wiki "2.3" --update-no-dev --quiet --no-interaction
+  - cat composer.json | grep semantic-media-wiki
+  - composer require mediawiki/semantic-media-wiki "2.3" --update-no-dev --no-interaction
   - php maintenance/update.php --quick
   - echo -e "\nenableSemantics( 'example.org' );\n" >> LocalSettings.php
   - cd extensions
   - cp -r $TRAVIS_BUILD_DIR SphinxStore
   - cd ..
   - echo -e "\nwfLoadExtension('SphinxStore');\n" >> LocalSettings.php
-  - cat composer.json | grep semantic-media-wiki
   - composer require 'phpunit/phpunit=3.7.*' --prefer-source
   - cd extensions/SemanticMediaWiki
 script:
