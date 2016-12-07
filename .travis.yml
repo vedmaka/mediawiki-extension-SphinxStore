@@ -3,6 +3,7 @@ php:
   - '5.6'
 before_script:
   - phpenv config-rm xdebug.ini
+  - apt-get install sphinxsearch
   - cd ..
   - wget https://github.com/wikimedia/mediawiki/archive/1.25.3.tar.gz
   - tar -zxf 1.25.3.tar.gz
@@ -22,13 +23,12 @@ before_script:
   - echo -e "\nenableSemantics( 'example.org' );\n" >> LocalSettings.php
   - cd extensions
   - cp -r $TRAVIS_BUILD_DIR SphinxStore
+  - cp SphinxStore/config/sphinx.conf /etc/sphinxsearch/sphinx.conf
   - cd ..
-  - echo -e "\nwfLoadExtension('SphinxStore');\n" >> LocalSettings.php
-  - cat composer.lock
-  - cat composer.json
+  #- echo -e "\nwfLoadExtension('SphinxStore');\n" >> LocalSettings.php
   - php maintenance/update.php --quick
   - cd extensions/SemanticMediaWiki
 script:
   - composer phpunit
-  - cd ../SphinxStore
-  - composer phpunit
+  #- cd ../SphinxStore
+  #- composer phpunit
