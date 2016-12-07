@@ -15,8 +15,8 @@ before_script:
   - composer install --no-dev
   - php maintenance/install.php --dbtype mysql --dbuser root --dbname wiki --dbpath $TRAVIS_BUILD_DIR --pass nyan TravisWiki admin
   - composer require mediawiki/semantic-media-wiki "2.3.0" --update-no-dev --no-interaction
-  - composer require foolz/sphinxql-query-builder "dev-master" --no-interaction
-  - composer require mediawiki/semantic-forms "^3.7" --no-interaction
+  - composer require foolz/sphinxql-query-builder --no-interaction
+  - composer require mediawiki/semantic-forms --no-interaction
   - composer require 'phpunit/phpunit=3.7.*' --prefer-source
   - composer update
   - echo -e "\nenableSemantics( 'example.org' );\n" >> LocalSettings.php
@@ -24,6 +24,7 @@ before_script:
   - cp -r $TRAVIS_BUILD_DIR SphinxStore
   - cd ..
   - echo -e "\nwfLoadExtension('SphinxStore');\n" >> LocalSettings.php
+  - cat composer.lock
   - php maintenance/update.php --quick
   - cd extensions/SemanticMediaWiki
 script:
