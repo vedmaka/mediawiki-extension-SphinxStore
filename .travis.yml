@@ -17,6 +17,8 @@ before_script:
   - php maintenance/install.php --dbtype mysql --dbuser root --dbname wiki --dbpath $TRAVIS_BUILD_DIR --pass nyan TravisWiki admin
   - cat composer.json
   - composer require mediawiki/semantic-media-wiki "2.3.0" --update-no-dev --no-interaction
+  - composer require 'foolz/sphinxql-query-builder'
+  - composer require 'mediawiki/semantic-forms'
   - cat composer.json
   - composer update
   - php maintenance/update.php --quick
@@ -26,7 +28,6 @@ before_script:
   - cd ..
   - echo -e "\nwfLoadExtension('SphinxStore');\n" >> LocalSettings.php
   - composer require 'phpunit/phpunit=3.7.*' --prefer-source
-  - composer require 'foolz/sphinxql-query-builder'
   - cd extensions/SemanticMediaWiki
 script:
   - composer phpunit
