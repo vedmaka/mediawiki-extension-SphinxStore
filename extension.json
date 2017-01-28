@@ -18,7 +18,7 @@
 	"callback": "SphinxStoreHooks::onExtensionLoaded",
 	"config": {
 		"SphinxStoreOriginalStore": null,
-		"SphinxStoreServer": "localhost",
+		"SphinxStoreServer": "127.0.0.1",
 		"SphinxStorePort": 9313,
 		"SphinxStoreIndex": "wiki_rt",
 		"SphinxStoreCategory": "Indexed",
